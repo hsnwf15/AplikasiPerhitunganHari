@@ -1,3 +1,8 @@
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -61,6 +66,8 @@ public class DayCalculatorForm extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(6, 30, 6, 5);
         jPanel1.add(jLabel2, gridBagConstraints);
+
+        spinnerYear1.setModel(new javax.swing.SpinnerNumberModel(2023, 1900, 2100, 1));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -88,6 +95,11 @@ public class DayCalculatorForm extends javax.swing.JFrame {
 
         btnCalculate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCalculate.setText("Hitung");
+        btnCalculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculateActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -109,6 +121,48 @@ public class DayCalculatorForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
+        int year = (int) spinnerYear1.getValue();
+        int month = cmbMonth1.getSelectedIndex();
+
+        // Membuat objek kalender untuk tanggal awal dan akhir
+        Calendar calendar = new GregorianCalendar(year, month, 1);
+        int daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        Date firstDay = calendar.getTime();
+
+        calendar.set(Calendar.DAY_OF_MONTH, daysInMonth);
+        Date lastDay = calendar.getTime();
+
+        // Menampilkan hasil jumlah hari, hari pertama, dan hari terakhir
+        lblResult.setText("Jumlah hari: " + daysInMonth + 
+                          "\nHari pertama: " + firstDay + 
+                          "\nHari terakhir: " + lastDay);
+
+        // Mengecek apakah tahun kabisat
+        if (new GregorianCalendar().isLeapYear(year)) {
+            lblResult.setText(lblResult.getText() + "\nTahun kabisat: Ya");
+        } else {
+            lblResult.setText(lblResult.getText() + "\nTahun kabisat: Tidak");
+        }
+        
+        // Mendapatkan tanggal dari JCalendar bagian kedua
+        Date selectedDate2 = calendarDate2.getDate();
+
+        if (selectedDate2 == null) {
+            JOptionPane.showMessageDialog(this, "Pilih tanggal di bagian kedua.");
+            return;
+        }
+
+        // Mendapatkan tanggal pertama dari JSpinner dan JComboBox
+        Calendar date1 = new GregorianCalendar(year, month, 1);
+        long diffInMillies = Math.abs(selectedDate2.getTime() - date1.getTimeInMillis());
+        long diffDays = diffInMillies / (24 * 60 * 60 * 1000);
+
+        // Menampilkan hasil selisih hari
+        lblResult.setText(lblResult.getText() + "\nSelisih hari: " + diffDays + " hari");
+
+    }//GEN-LAST:event_btnCalculateActionPerformed
 
     /**
      * @param args the command line arguments
