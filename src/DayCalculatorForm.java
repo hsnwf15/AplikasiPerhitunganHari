@@ -40,6 +40,7 @@ public class DayCalculatorForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lblResult = new javax.swing.JTextArea();
         btnCalculate = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +72,7 @@ public class DayCalculatorForm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 4);
         jPanel1.add(spinnerYear1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -79,7 +81,7 @@ public class DayCalculatorForm extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 6);
         jPanel1.add(calendarDate2, gridBagConstraints);
 
         lblResult.setColumns(20);
@@ -90,7 +92,8 @@ public class DayCalculatorForm extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 70;
         jPanel1.add(jScrollPane1, gridBagConstraints);
 
         btnCalculate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -103,20 +106,33 @@ public class DayCalculatorForm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 4);
         jPanel1.add(btnCalculate, gridBagConstraints);
+
+        btnReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 4);
+        jPanel1.add(btnReset, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
         );
 
         pack();
@@ -164,6 +180,20 @@ public class DayCalculatorForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCalculateActionPerformed
 
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // Mengatur JComboBox bulan ke nilai default (misalnya Januari atau indeks 0)
+        cmbMonth1.setSelectedIndex(0);
+
+        // Mengatur JSpinner tahun ke nilai default (misalnya tahun ini)
+        spinnerYear1.setValue(Calendar.getInstance().get(Calendar.YEAR));
+
+        // Mengatur JCalendar di input kedua ke tanggal saat ini
+        calendarDate2.setDate(new Date());
+
+        // Mengosongkan atau mereset label hasil
+        lblResult.setText("");
+    }//GEN-LAST:event_btnResetActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,6 +231,7 @@ public class DayCalculatorForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculate;
+    private javax.swing.JButton btnReset;
     private com.toedter.calendar.JCalendar calendarDate2;
     private javax.swing.JComboBox<String> cmbMonth1;
     private javax.swing.JLabel jLabel1;
