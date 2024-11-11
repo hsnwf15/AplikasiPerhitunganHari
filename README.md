@@ -24,7 +24,7 @@ Aplikasi Day Calculator ini adalah aplikasi berbasis Java Swing yang digunakan u
   ![ss1](ss1.PNG)
 - ### menginputkan bulan dan tahun, lalu menghitung jumlah hari dll, lalu menampilkan outputnya
   ![ss2](ss2.PNG)
-![Tampilan awal program](ss2.PNG)
+
 Tampilan aplikasi terdiri dari:
 - **JComboBox** untuk memilih bulan.
 - **JSpinner** untuk memasukkan tahun.
