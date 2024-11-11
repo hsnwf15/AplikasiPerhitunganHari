@@ -20,7 +20,10 @@ Aplikasi Day Calculator ini adalah aplikasi berbasis Java Swing yang digunakan u
    - Fitur ini memungkinkan pengguna untuk mengatur ulang semua input ke nilai default, sehingga pengguna dapat memulai perhitungan baru tanpa menghapus input satu per satu.
 
 ## Antarmuka Pengguna
-![Tampilan awal program](ss1.PNG)
+- ### tampilan awal program
+  ![ss1](ss1.PNG)
+- ### menginputkan bulan dan tahun, lalu menghitung jumlah hari dll, lalu menampilkan outputnya
+  ![ss2](ss2.PNG)
 ![Tampilan awal program](ss2.PNG)
 Tampilan aplikasi terdiri dari:
 - **JComboBox** untuk memilih bulan.
